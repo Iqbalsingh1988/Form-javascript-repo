@@ -66,37 +66,92 @@
     <tr>
         <th>User ID</th>
         <th>Password</th>
+        <th>Action</th>
     </tr>
 </table>
 
 <script>
 
+// function saveData(){
+
+//     const user = document.getElementById("userid").value;
+//     const pass = document.getElementById("password").value;
+
+//     if(user==="" || pass===""){
+//         alert("Please fill both fields.");
+//         return;
+//     }
+
+//     const table = document.getElementById("dataTable");
+
+//     const row = table.insertRow();
+
+//     const cell1 = row.insertCell(0);
+//     const cell2 = row.insertCell(1);
+
+//     cell1.innerHTML = user;
+//     cell2.innerHTML = pass;
+
+//     document.getElementById("userid").value = "";
+//     document.getElementById("password").value = "";
+
+// }
+
+
 function saveData(){
 
-    let user = document.getElementById("userid").value;
-    let pass = document.getElementById("password").value;
+    // User ID Input ki value lena
+    const user = document.getElementById("userid").value;
 
-    if(user==="" || pass===""){
+    // Password Input ki value lena
+    const pass = document.getElementById("password").value;
+
+    // Agar koi input empty ho to alert dikhao
+    if(user === "" || pass === ""){
         alert("Please fill both fields.");
         return;
     }
 
-    let table = document.getElementById("dataTable");
+    // Table ko select karna
+    const table = document.getElementById("dataTable");
 
-    let row = table.insertRow();
+    // Table ke last me ek new row banana
+    const row = table.insertRow();
 
-    let cell1 = row.insertCell(0);
-    let cell2 = row.insertCell(1);
+    // Row ke andar 3 cells banana
+    const cell1 = row.insertCell(0);
+    const cell2 = row.insertCell(1);
+    const cell3 = row.insertCell(2);
+    const cell4 = row.insertCell(3);
 
+    // User ID show karna
     cell1.innerHTML = user;
+
+    // Password show karna
     cell2.innerHTML = pass;
 
-    // Clear Inputs
+    // Delete Icon (SVG)
+    cell3.innerHTML = `
+        <svg onclick="deleteRow(this)"
+             xmlns="http://www.w3.org/2000/svg"
+             width="22"
+             height="22"
+             viewBox="0 0 24 24"
+             fill="red"
+             style="cursor:pointer">
+
+            <path d="M18 6L6 18M6 6l12 12"
+                  stroke="red"
+                  stroke-width="2"
+                  stroke-linecap="round"/>
+        </svg>
+    `;
+
+    // Input Fields ko empty kar dena
     document.getElementById("userid").value = "";
     document.getElementById("password").value = "";
 
 }
-
 </script>
 
 </body>
