@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Form</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        margin:40px;
+    }
+
+    .form-box{
+        width:350px;
+        padding:20px;
+        border:1px solid #ccc;
+        border-radius:8px;
+    }
+
+    input{
+        width:100%;
+        padding:10px;
+        margin-bottom:15px;
+        box-sizing:border-box;
+    }
+
+    button{
+        padding:10px 20px;
+        cursor:pointer;
+    }
+
+    table{
+        width:500px;
+        border-collapse:collapse;
+        margin-top:30px;
+    }
+
+    table,th,td{
+        border:1px solid #000;
+    }
+
+    th,td{
+        padding:10px;
+        text-align:center;
+    }
+
+    th{
+        background:#f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<div class="form-box">
+
+    <input type="text" id="userid" placeholder="Enter User ID">
+
+    <input type="password" id="password" placeholder="Enter Password">
+
+    <button onclick="saveData()">Submit</button>
+
+</div>
+
+<table id="dataTable">
+    <tr>
+        <th>User ID</th>
+        <th>Password</th>
+    </tr>
+</table>
+
+<script>
+
+function saveData(){
+
+    let user = document.getElementById("userid").value;
+    let pass = document.getElementById("password").value;
+
+    if(user==="" || pass===""){
+        alert("Please fill both fields.");
+        return;
+    }
+
+    let table = document.getElementById("dataTable");
+
+    let row = table.insertRow();
+
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+
+    cell1.innerHTML = user;
+    cell2.innerHTML = pass;
+
+    // Clear Inputs
+    document.getElementById("userid").value = "";
+    document.getElementById("password").value = "";
+
+}
+
+</script>
+
+</body>
+</html>
