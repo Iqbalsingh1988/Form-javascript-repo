@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Form</title>
+</head>
+<body>
+
+    <h1>Hello</h1>
+
+    <script>
+
+        // ==========================
+        // H1 Text Change
+        // ==========================
+
+        const heading = document.querySelector("h1");
+        heading.textContent = "Practice Form";
+
+        heading.style.textAlign = "center";
+        heading.style.color = "#333";
+        heading.style.marginBottom = "20px";
+
+
+        // ==========================
+        // Form Create
+        // ==========================
+
+        const form = document.createElement("form");
+
+        form.setAttribute("class", "form");
+
+        document.body.appendChild(form);
+
+
+        // ==========================
+        // Form CSS
+        // ==========================
+
+        form.style.width = "350px";
+        form.style.margin = "auto";
+        form.style.padding = "20px";
+        form.style.border = "1px solid #ccc";
+        form.style.borderRadius = "10px";
+        form.style.boxShadow = "0 0 10px rgba(0,0,0,0.2)";
+        form.style.display = "flex";
+        form.style.flexDirection = "column";
+        form.style.gap = "15px";
+
+
+        // ==========================
+        // Function Create Input
+        // ==========================
+
+        function createInput(type, placeholder) {
+
+            const input = document.createElement("input");
+
+            input.setAttribute("type", type);
+            input.setAttribute("placeholder", placeholder);
+            input.setAttribute("class", "input-box");
+
+            input.style.padding = "10px";
+            input.style.fontSize = "16px";
+            input.style.border = "1px solid gray";
+            input.style.borderRadius = "5px";
+            input.style.outline = "none";
+
+            return input;
+        }
+
+
+        // ==========================
+        // 4 Inputs
+        // ==========================
+
+        const name = createInput("text", "Enter Name");
+
+        const email = createInput("email", "Enter Email");
+
+        const password = createInput("password", "Enter Password");
+
+        const mobile = createInput("number", "Enter Mobile");
+
+
+        form.appendChild(name);
+        form.appendChild(email);
+        form.appendChild(password);
+        form.appendChild(mobile);
+
+
+        // ==========================
+        // Paragraph
+        // ==========================
+
+        const para = document.createElement("p");
+
+        para.textContent =
+            "Welcome to JavaScript practice form. Fill all details before submitting.";
+
+        para.setAttribute("class", "paragraph");
+
+        para.style.color = "#555";
+        para.style.fontSize = "15px";
+        para.style.lineHeight = "24px";
+        para.style.textAlign = "center";
+
+
+        form.appendChild(para);
+
+
+        // ==========================
+        // Submit Button
+        // ==========================
+
+        const button = document.createElement("button");
+
+        button.textContent = "Submit";
+
+        button.setAttribute("type", "submit");
+        button.setAttribute("class", "btn");
+
+        button.style.padding = "12px";
+        button.style.fontSize = "16px";
+        button.style.background = "royalblue";
+        button.style.color = "white";
+        button.style.border = "none";
+        button.style.borderRadius = "5px";
+        button.style.cursor = "pointer";
+
+
+        form.appendChild(button);
+
+
+        // ==========================
+        // Submit Event
+        // ==========================
+
+        form.addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            alert("Form Submitted Successfully");
+
+        });
+
+    </script>
+
+</body>
+</html>
