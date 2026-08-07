@@ -1,9 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>JavaScript Form</title>
 </head>
+
 <body>
 
     <h1>Hello's</h1>
@@ -15,6 +17,7 @@
         // ==========================
 
         const heading = document.querySelector("h1");
+
         heading.textContent = "Practice Form";
 
         heading.style.textAlign = "center";
@@ -132,17 +135,156 @@
         form.appendChild(button);
 
 
-        // ==========================
-        // Submit Event
-        // ==========================
+        // ==================================================
+        // TABLE CONTAINER
+        // ==================================================
 
-        form.addEventListener("submit", function (e) {
+        const tableShow = document.createElement("div");
 
-            e.preventDefault();
+        tableShow.setAttribute("class", "table-show");
 
-            alert("Form Submitted Successfully");
+        tableShow.style.width = "800px";
+        tableShow.style.margin = "40px auto";
+
+
+        document.body.appendChild(tableShow);
+
+
+        // ==================================================
+        // TABLE CREATE
+        // ==================================================
+
+        const table = document.createElement("table");
+
+        table.setAttribute("class", "form-table");
+
+
+        table.style.width = "100%";
+        table.style.borderCollapse = "collapse";
+        table.style.textAlign = "center";
+
+
+        // ==================================================
+        // TABLE HEADER
+        // ==================================================
+
+        const thead = document.createElement("thead");
+
+        const headerRow = document.createElement("tr");
+
+
+        const headers = [
+            "Name",
+            "Email",
+            "Password",
+            "Mobile"
+        ];
+
+
+        headers.forEach(function (headerText) {
+
+            const th = document.createElement("th");
+
+            th.textContent = headerText;
+
+            th.style.border = "1px solid #ccc";
+            th.style.padding = "10px";
+            th.style.background = "#eee";
+
+            headerRow.appendChild(th);
 
         });
+
+
+        thead.appendChild(headerRow);
+
+        table.appendChild(thead);
+
+
+        // ==================================================
+        // TABLE BODY
+        // ==================================================
+
+        const tbody = document.createElement("tbody");
+
+        table.appendChild(tbody);
+
+        tableShow.appendChild(table);
+
+
+        // ==================================================
+        // FORM SUBMIT
+        // ==================================================
+
+        form.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            // ==========================
+            // Get Inputs
+            // ==========================
+
+            const inputs = document.querySelectorAll(".input-box");
+
+
+            // ==========================
+            // Validation
+            // ==========================
+
+            for (let index = 0; index < inputs.length; index++) {
+
+                if (inputs[index].value === "") {
+
+                    alert("Please fill all fields.");
+
+                    return;
+                }
+
+            }
+
+
+            // ==================================================
+            // CREATE NEW TABLE ROW
+            // ==================================================
+
+            const tr = document.createElement("tr");
+
+
+            // ==================================================
+            // INPUT DATA TABLE ME ADD
+            // ==================================================
+
+            for (let index = 0; index < inputs.length; index++) {
+
+                const td = document.createElement("td");
+
+                td.textContent = inputs[index].value;
+
+                td.style.border = "1px solid #ccc";
+                td.style.padding = "10px";
+
+                tr.appendChild(td);
+
+            }
+
+
+            // ==================================================
+            // ROW -> TBODY
+            // ==================================================
+
+            tbody.appendChild(tr);
+
+
+            // ==================================================
+            // FORM RESET
+            // ==================================================
+
+            form.reset();
+
+
+        });
+
 
     </script>
 
