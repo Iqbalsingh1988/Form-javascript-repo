@@ -23,7 +23,78 @@ let value = 0;
 
 let count = 0;
 
-likeCount.textContent = count;
+
+// Starting Like Counter
+
+likeCount.textContent = "Like Counter " + count;
+
+
+// ==================================================
+// LIKE FUNCTION
+// ==================================================
+
+function likePost() {
+
+    heartLike.style.fill = "red";
+
+    value = 1;
+
+    count = count + 1;
+
+    likeCount.textContent = "Like Counter " + count;
+
+}
+
+
+// ==================================================
+// UNLIKE FUNCTION
+// ==================================================
+
+function unlikePost() {
+
+    heartLike.style.fill = "transparent";
+
+    value = 0;
+
+    count = count - 1;
+
+    likeCount.textContent = "Like Counter " + count;
+
+}
+
+
+// ==================================================
+// SINGLE CLICK / DOUBLE CLICK CONTROL
+// ==================================================
+
+let clickTimer;
+
+
+// ==================================================
+// SINGLE CLICK LIKE / UNLIKE
+// ==================================================
+
+heartLike.addEventListener("click", function () {
+
+    clickTimer = setTimeout(function () {
+
+        // LIKE
+        if (value === 0) {
+
+            likePost();
+
+        }
+
+        // UNLIKE
+        else {
+
+            unlikePost();
+
+        }
+
+    }, 250);
+
+});
 
 
 // ==================================================
@@ -32,22 +103,36 @@ likeCount.textContent = count;
 
 imgArea.addEventListener("dblclick", function () {
 
+    // Single click ko cancel karo
+    clearTimeout(clickTimer);
+
+
+    // Agar already liked nahi hai
+    if (value === 0) {
+
+        likePost();
+
+    }
+
+
+    // Big Heart Animation
+
     svg.style.fill = "red";
 
     svg.style.opacity = "1";
 
-    imgLike.setAttribute("class", "img_like animate");
-
-    heartLike.style.fill = "red";
-
-    count = count + 1;
-
-    likeCount.textContent = "Like Counter " + count;
+    imgLike.setAttribute(
+        "class",
+        "img_like animate"
+    );
 
 
     setTimeout(function () {
 
-        imgLike.setAttribute("class", "img_like");
+        imgLike.setAttribute(
+            "class",
+            "img_like"
+        );
 
         svg.style.fill = "transparent";
 
@@ -59,49 +144,16 @@ imgArea.addEventListener("dblclick", function () {
 
 
 // ==================================================
-// SINGLE CLICK LIKE / UNLIKE
-// ==================================================
-
-heartLike.addEventListener("click", function () {
-
-    // LIKE
-    if (value === 0) {
-
-        heartLike.style.fill = "red";
-
-        value = 1;
-
-        count = count + 1;
-
-        likeCount.textContent = "Like Counter " + count;
-
-    }
-
-    // UNLIKE
-    else {
-
-        heartLike.style.fill = "transparent";
-
-        value = 0;
-
-        count = count - 1;
-
-        likeCount.textContent = "Like Counter " + count;
-
-    }
-
-});
-
-
-// ==================================================
 // COMMENT SYSTEM
 // ==================================================
 
 
-// Main function
-// New textarea + button create karega
+// ==================================================
+// CREATE COMMENT BOX FUNCTION
+// ==================================================
 
 function createCommentBox() {
+
 
     // ==============================================
     // COMMENT BOX
@@ -109,7 +161,10 @@ function createCommentBox() {
 
     const commentBox = document.createElement("div");
 
-    commentBox.setAttribute("class", "comment_box");
+    commentBox.setAttribute(
+        "class",
+        "comment_box"
+    );
 
 
     // ==============================================
@@ -118,7 +173,10 @@ function createCommentBox() {
 
     const textarea = document.createElement("textarea");
 
-    textarea.setAttribute("class", "comment_textarea");
+    textarea.setAttribute(
+        "class",
+        "comment_textarea"
+    );
 
     textarea.setAttribute(
         "placeholder",
@@ -126,7 +184,9 @@ function createCommentBox() {
     );
 
 
+    // ==============================================
     // TEXTAREA CSS
+    // ==============================================
 
     textarea.style.width = "100%";
 
@@ -166,7 +226,9 @@ function createCommentBox() {
     );
 
 
+    // ==============================================
     // BUTTON CSS
+    // ==============================================
 
     postButton.style.marginTop = "8px";
 
@@ -214,67 +276,81 @@ function createCommentBox() {
     // POST COMMENT
     // ==============================================
 
-    postButton.addEventListener("click", function () {
+    postButton.addEventListener(
+        "click",
+        function () {
 
-        const commentText = textarea.value.trim();
+            // Get textarea value
+
+            const commentText =
+                textarea.value.trim();
 
 
-        // Empty check
+            // ==========================================
+            // EMPTY CHECK
+            // ==========================================
 
-        if (commentText === "") {
+            if (commentText === "") {
 
-            alert("Please write a comment.");
+                alert("Please write a comment.");
 
-            return;
+                return;
+
+            }
+
+
+            // ==========================================
+            // CREATE COMMENT
+            // ==========================================
+
+            const comment =
+                document.createElement("div");
+
+
+            comment.setAttribute(
+                "class",
+                "posted_comment"
+            );
+
+
+            comment.textContent =
+                commentText;
+
+
+            // ==========================================
+            // COMMENT CSS
+            // ==========================================
+
+            comment.style.padding = "10px";
+
+            comment.style.marginTop = "10px";
+
+            comment.style.background = "#f2f2f2";
+
+            comment.style.borderRadius = "8px";
+
+            comment.style.fontSize = "15px";
+
+            comment.style.lineHeight = "22px";
+
+            comment.style.color = "#222";
+
+
+            // ==========================================
+            // SHOW COMMENT
+            // ==========================================
+
+            commentList.appendChild(comment);
+
+
+            // ==========================================
+            // CLEAR TEXTAREA
+            // ==========================================
+
+            textarea.value = "";
 
         }
-
-
-        // ==========================================
-        // CREATE COMMENT
-        // ==========================================
-
-        const comment = document.createElement("div");
-
-        comment.setAttribute(
-            "class",
-            "posted_comment"
-        );
-
-
-        comment.textContent = commentText;
-
-
-        // COMMENT CSS
-
-        comment.style.padding = "10px";
-
-        comment.style.marginTop = "10px";
-
-        comment.style.background = "#f2f2f2";
-
-        comment.style.borderRadius = "8px";
-
-        comment.style.fontSize = "15px";
-
-        comment.style.lineHeight = "22px";
-
-
-        // ==========================================
-        // SHOW COMMENT
-        // ==========================================
-
-        commentList.appendChild(comment);
-
-
-        // ==========================================
-        // CLEAR TEXTAREA
-        // ==========================================
-
-        textarea.value = "";
-
-
-    });
+    );
 
 }
 
