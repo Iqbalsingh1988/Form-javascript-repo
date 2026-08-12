@@ -1,0 +1,83 @@
+::selection {
+    color: transparent;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #333;
+}
+main {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+.reels {
+    height: 100%;
+    width: 400px;
+    margin: auto;
+}
+.reel {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.img_area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.img_area .img_like {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img_area .img_like svg {
+    fill: transparent;
+    stroke: #fff;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+}
+.img_area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img_like.animate {
+  animation: slideUp 1.5s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0px);
+    scale: 1;
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-100%);
+    scale: 1.5;
+    opacity: 1;           
+  }
+}
+.actions {
+    position: absolute;
+}
+.like {
+    width: auto;
+    height: auto;
+}
+.like .like-heart {
+    stroke: #fff;
+    width: 50px;
+    height: 50px;
+    fill: transparent;
+}
