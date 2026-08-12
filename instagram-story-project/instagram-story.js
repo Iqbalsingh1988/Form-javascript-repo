@@ -40,6 +40,10 @@ imgArea.addEventListener("dblclick", function () {
 
     heartLike.style.fill = "red";
 
+    count = count + 1;
+
+    likeCount.textContent = count;
+
 
     setTimeout(function () {
 
