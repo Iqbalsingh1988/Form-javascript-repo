@@ -42,7 +42,7 @@ imgArea.addEventListener("dblclick", function () {
 
     count = count + 1;
 
-    likeCount.textContent = count;
+    likeCount.textContent = "Like Counter " + count;
 
 
     setTimeout(function () {
@@ -73,7 +73,7 @@ heartLike.addEventListener("click", function () {
 
         count = count + 1;
 
-        likeCount.textContent = count;
+        likeCount.textContent = "Like Counter " + count;
 
     }
 
@@ -86,7 +86,7 @@ heartLike.addEventListener("click", function () {
 
         count = count - 1;
 
-        likeCount.textContent = count;
+        likeCount.textContent = "Like Counter " + count;
 
     }
 
