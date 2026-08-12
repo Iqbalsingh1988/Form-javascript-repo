@@ -42,7 +42,7 @@ imgArea.addEventListener("dblclick", function () {
 
     count = count + 1;
 
-    likeCount.textContent = Like-count;
+    likeCount.textContent = "Like-count";
     likeCount.textContent = count;
 
 
