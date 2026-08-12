@@ -16,6 +16,20 @@ const commentArea = document.querySelector(".comment_area");
 
 
 // ==================================================
+// COMMENT ICON
+// ==================================================
+
+const commentIcon = document.querySelector(".comment svg");
+
+
+// ==================================================
+// CURRENT TEXTAREA
+// ==================================================
+
+let currentTextarea = null;
+
+
+// ==================================================
 // LIKE VARIABLES
 // ==================================================
 
@@ -79,6 +93,7 @@ heartLike.addEventListener("click", function () {
     clickTimer = setTimeout(function () {
 
         // LIKE
+
         if (value === 0) {
 
             likePost();
@@ -86,6 +101,7 @@ heartLike.addEventListener("click", function () {
         }
 
         // UNLIKE
+
         else {
 
             unlikePost();
@@ -103,11 +119,13 @@ heartLike.addEventListener("click", function () {
 
 imgArea.addEventListener("dblclick", function () {
 
-    // Single click ko cancel karo
+    // Single click cancel
+
     clearTimeout(clickTimer);
 
 
-    // Agar already liked nahi hai
+    // Like only if not already liked
+
     if (value === 0) {
 
         likePost();
@@ -182,6 +200,13 @@ function createCommentBox() {
         "placeholder",
         "Post your comment"
     );
+
+
+    // ==============================================
+    // CURRENT TEXTAREA SET
+    // ==============================================
+
+    currentTextarea = textarea;
 
 
     // ==============================================
@@ -353,6 +378,29 @@ function createCommentBox() {
     );
 
 }
+
+
+// ==================================================
+// COMMENT ICON CLICK
+// ==================================================
+
+// Jab comment SVG par click hoga
+// textarea automatically focus hoga
+
+commentIcon.addEventListener("click", function () {
+
+    if (currentTextarea) {
+
+        currentTextarea.focus();
+
+        currentTextarea.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }
+
+});
 
 
 // ==================================================
