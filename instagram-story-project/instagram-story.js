@@ -126,7 +126,7 @@ function createCommentBox() {
 
     textarea.style.width = "100%";
 
-    textarea.style.height = "70px";
+    textarea.style.height = "40px";
 
     textarea.style.padding = "10px";
 
