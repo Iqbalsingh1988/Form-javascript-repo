@@ -99,6 +99,7 @@ main {
 	position: relative;
 	color: #fff;
 	font-size: 18px;
+margin: 5px 0px;
 }
 .comment_box {
     display: flex;
