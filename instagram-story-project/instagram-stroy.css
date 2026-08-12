@@ -107,3 +107,13 @@ main {
     gap: 10px;
     width: auto;
 }
+.whatsapp_icon{
+    stroke: #fff;
+    width: 30px;
+    height: 30px;
+    fill: transparent;
+}
+.whatsapp_icon svg {
+    fill: transparent;
+    stroke: #fff;
+}
