@@ -14,6 +14,9 @@ const likeCount = document.querySelector(".like_count");
 
 const commentArea = document.querySelector(".comment_area");
 
+const main = document.querySelector("main");
+
+
 
 // ==================================================
 // COMMENT ICON
@@ -408,3 +411,63 @@ commentIcon.addEventListener("click", function () {
 // ==================================================
 
 createCommentBox();
+
+
+
+// ==================================================
+// CREATE MOUSE CIRCLE
+// ==================================================
+
+const mouseCircle = document.createElement("div");
+
+mouseCircle.setAttribute(
+    "class",
+    "mouse_circle"
+);
+
+
+// ==================================================
+// CIRCLE CSS
+// ==================================================
+
+mouseCircle.style.width = "30px";
+
+mouseCircle.style.height = "30px";
+
+mouseCircle.style.background = "black";
+
+mouseCircle.style.border = "2px solid white";
+
+mouseCircle.style.borderRadius = "50%";
+
+mouseCircle.style.position = "fixed";
+
+mouseCircle.style.pointerEvents = "none";
+
+mouseCircle.style.zIndex = "9999";
+
+mouseCircle.style.transform = "translate(-50%, -50%)";
+
+mouseCircle.style.display = "none";
+
+
+// ==================================================
+// ADD CIRCLE TO BODY
+// ==================================================
+
+document.body.appendChild(mouseCircle);
+
+
+// ==================================================
+// MOUSE MOVE
+// ==================================================
+
+main.addEventListener("mousemove", function (event) {
+
+    mouseCircle.style.display = "block";
+
+    mouseCircle.style.left = event.clientX + "px";
+
+    mouseCircle.style.top = event.clientY + "px";
+
+});
