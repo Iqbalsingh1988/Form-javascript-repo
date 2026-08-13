@@ -455,19 +455,3 @@ mouseCircle.style.display = "none";
 // ADD CIRCLE TO BODY
 // ==================================================
 
-document.body.appendChild(mouseCircle);
-
-
-// ==================================================
-// MOUSE MOVE
-// ==================================================
-
-main.addEventListener("mousemove", function (event) {
-
-    mouseCircle.style.display = "block";
-
-    mouseCircle.style.left = event.clientX + "px";
-
-    mouseCircle.style.top = event.clientY + "px";
-
-});
