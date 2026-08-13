@@ -418,9 +418,9 @@ createCommentBox();
 // CREATE MOUSE CIRCLE
 // ==================================================
 
-const mouseCircle = document.createElement("div");
+// const mouseCircle = document.createElement("div");
 
-mouseCircle.setAttribute(
+main.setAttribute(
     "class",
     "mouse_circle"
 );
@@ -430,32 +430,32 @@ mouseCircle.setAttribute(
 // CIRCLE CSS
 // ==================================================
 
-mouseCircle.style.width = "30px";
+main.style.width = "30px";
 
-mouseCircle.style.height = "30px";
+main.style.height = "30px";
 
-mouseCircle.style.background = "black";
+main.style.background = "black";
 
-mouseCircle.style.border = "2px solid white";
+main.style.border = "2px solid white";
 
-mouseCircle.style.borderRadius = "50%";
+main.style.borderRadius = "50%";
 
-mouseCircle.style.position = "fixed";
+main.style.position = "fixed";
 
-mouseCircle.style.pointerEvents = "none";
+main.style.pointerEvents = "none";
 
-mouseCircle.style.zIndex = "9999";
+main.style.zIndex = "9999";
 
-mouseCircle.style.transform = "translate(-50%, -50%)";
+main.style.transform = "translate(-50%, -50%)";
 
-mouseCircle.style.display = "none";
+main.style.display = "none";
 
 
 // ==================================================
 // ADD CIRCLE TO BODY
 // ==================================================
 
-document.body.appendChild(mouseCircle);
+document.body.appendChild(main);
 
 
 // ==================================================
@@ -464,10 +464,10 @@ document.body.appendChild(mouseCircle);
 
 main.addEventListener("mousemove", function (event) {
 
-    mouseCircle.style.display = "block";
+    main.style.display = "block";
 
-    mouseCircle.style.left = event.clientX + "px";
+    main.style.left = event.clientX + "px";
 
-    mouseCircle.style.top = event.clientY + "px";
+    main.style.top = event.clientY + "px";
 
 });
