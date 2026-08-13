@@ -14,7 +14,8 @@ const likeCount = document.querySelector(".like_count");
 
 const commentArea = document.querySelector(".comment_area");
 
-const main = document.querySelector("main");
+const reels = document.querySelector(".reels");
+
 
 
 
@@ -413,17 +414,13 @@ commentIcon.addEventListener("click", function () {
 createCommentBox();
 
 
-
 // ==================================================
-// CREATE MOUSE CIRCLE
+// CREATE CIRCLE
 // ==================================================
 
 const mouseCircle = document.createElement("div");
 
-mouseCircle.setAttribute(
-    "class",
-    "mouse_circle"
-);
+mouseCircle.setAttribute("class", "mouse_circle");
 
 
 // ==================================================
@@ -431,7 +428,6 @@ mouseCircle.setAttribute(
 // ==================================================
 
 mouseCircle.style.width = "30px";
-
 mouseCircle.style.height = "30px";
 
 mouseCircle.style.background = "black";
@@ -440,7 +436,7 @@ mouseCircle.style.border = "2px solid white";
 
 mouseCircle.style.borderRadius = "50%";
 
-mouseCircle.style.position = "fixed";
+mouseCircle.style.position = "absolute";
 
 mouseCircle.style.pointerEvents = "none";
 
@@ -452,22 +448,40 @@ mouseCircle.style.display = "none";
 
 
 // ==================================================
-// ADD CIRCLE TO BODY
+// IMPORTANT
 // ==================================================
 
-document.body.appendChild(mouseCircle);
+reels.style.position = "relative";
+
+
+// Circle ko sirf reels ke andar rakho
+
+reels.appendChild(mouseCircle);
 
 
 // ==================================================
 // MOUSE MOVE
 // ==================================================
 
-main.addEventListener("mousemove", function (event) {
+reels.addEventListener("mousemove", function (event) {
 
     mouseCircle.style.display = "block";
 
-    mouseCircle.style.left = event.clientX + "px";
+    mouseCircle.style.left =
+        event.offsetX + "px";
 
-    mouseCircle.style.top = event.clientY + "px";
+    mouseCircle.style.top =
+        event.offsetY + "px";
+
+});
+
+
+// ==================================================
+// MOUSE LEAVE
+// ==================================================
+
+reels.addEventListener("mouseleave", function () {
+
+    mouseCircle.style.display = "none";
 
 });
